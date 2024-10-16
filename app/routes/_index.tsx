@@ -1,4 +1,11 @@
 import type { MetaFunction } from '@remix-run/node';
+import React from 'react';
+import { ListTodo, ClipboardList } from 'lucide-react';
+import { TooltipProvider } from '~/components/atoms/shadcn-ui/tooltip';
+import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '~/components/atoms/shadcn-ui/resizable';
+import { Nav } from '~/components/organisms/navbar';
+import { Outlet } from '@remix-run/react';
+import { cn } from '~/lib/utils';
 
 export const meta: MetaFunction = () => {
 	return [{ title: 'New Remix App' }, { name: 'description', content: 'Welcome to Remix!' }];
