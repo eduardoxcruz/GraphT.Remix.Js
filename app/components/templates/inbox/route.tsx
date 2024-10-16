@@ -66,8 +66,6 @@ export default function TaskInbox() {
                     </div>
                 </form>
             </div>
-            <TabsContent value="all" className="m-0"></TabsContent>
-            <TabsContent value="unread" className="m-0"></TabsContent>
             <TabsContent value="readytogo" className="m-0">
                 <TaskList tasks={tasks} />
             </TabsContent>
