@@ -10,6 +10,14 @@ export default defineConfig({
 				v3_relativeSplatPath: true,
 				v3_throwAbortReason: true,
 			},
+			routes(defineRoutes) {
+                return defineRoutes((route) => {
+                    route('/', 'routes/_index.tsx', () => {
+                        route('inbox', 'components/inbox/route.tsx');
+                        route('planning', 'routes/planning/route.tsx');
+                    });
+                });
+            },
 		}),
 		tsconfigPaths(),
 	],
