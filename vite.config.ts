@@ -13,7 +13,7 @@ export default defineConfig({
 			routes(defineRoutes) {
                 return defineRoutes((route) => {
                     route('/', 'routes/_index.tsx', () => {
-                        route('inbox', 'components/inbox/route.tsx');
+                        route('inbox', 'routes/inbox/route.tsx');
                         route('planning', 'routes/planning/route.tsx');
                     });
                 });
