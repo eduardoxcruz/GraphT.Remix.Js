@@ -23,7 +23,9 @@
 		"forceConsistentCasingInFileNames": true,
 		"baseUrl": ".",
 		"paths": {
-			"~/*": ["./app/*"]
+			"~/*": ["./app/*"],
+			"@/ui/*": ["./app/components/atoms/shadcn-ui/*"],
+			"@/atoms/*": ["./app/components/atoms/*"],
 		},
 
 		// Vite takes care of building everything, not tsc.
