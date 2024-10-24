@@ -17,7 +17,7 @@ export default function TaskCard({ task, isSelected, onClick }: TaskCardProps) {
 	return (
 		<button
 			className={cn(
-				'flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent w-full',
+				'flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent bg-white w-full',
 				isSelected && 'bg-muted'
 			)}
 			onClick={onClick}
