@@ -3,19 +3,19 @@ class DateTimeInfo {
     public startDateTime: Date | null;
     public finishDateTime: Date | null;
     public limitDateTime: Date | null;
-    public timeSpend: string;
+    private _timeSpend: string;
 
     constructor() {
         this.creationDateTime = new Date();
         this.startDateTime = null;
         this.finishDateTime = null;
         this.limitDateTime = null;
-        this.timeSpend = '\u23f0 0 day(s) - 0 hours - 0 minutes';
+        this._timeSpend = '\u23f0 0 day(s) - 0 hours - 0 minutes';
     }
 
-    public updateTimeSpend(timeSpend: number): void {
+    public set timeSpend(timeSpend: number) {
         if (timeSpend < 1) {
-            this.timeSpend = '\u23f0 0 day(s) - 0 hours - 0 minutes';
+            this._timeSpend = '\u23f0 0 day(s) - 0 hours - 0 minutes';
             return;
         }
 
@@ -24,8 +24,16 @@ class DateTimeInfo {
         const minutes = Math.floor((timeSpend % (60 * 60 * 1000)) / (60 * 1000));
 
         const emoji = timeSpend > 60 * 60 * 1000 ? '\u23f0' : '\u26a1';
-        this.timeSpend = `${emoji} ${days} day(s) - ${hours} hours - ${minutes} minutes`;
+        this._timeSpend = `${emoji} ${days} day(s) - ${hours} hours - ${minutes} minutes`;
     }
+
+	public get timeSpend(): string {
+		return this._timeSpend;
+	}
+
+	public set punctuality(value: string) {
+		return;
+	}
 
     public get punctuality(): string {
         const now = new Date();
