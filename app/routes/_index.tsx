@@ -6,6 +6,11 @@ import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '~/componen
 import { Nav } from '~/components/organisms/navbar';
 import { Outlet } from '@remix-run/react';
 import { cn } from '~/lib/utils';
+import TaskDisplay from '~/components/organisms/task-info-panel';
+import Task from '~/components/atoms/entities/task';
+import { Status } from '~/components/atoms/value-objects/status';
+import { Complexity } from '~/components/atoms/value-objects/complexity';
+import { Priority } from '~/components/atoms/value-objects/priority';
 
 export const meta: MetaFunction = () => {
 	return [{ title: 'New Remix App' }, { name: 'description', content: 'Welcome to Remix!' }];
@@ -66,7 +71,9 @@ export default function Index() {
 						<Outlet />
 					</ResizablePanel>
 					<ResizableHandle withHandle />
-					{<ResizablePanel defaultSize={35} minSize={30}></ResizablePanel>}
+					<ResizablePanel defaultSize={35} minSize={30}>
+						<TaskDisplay task={new Task('Setup project', Status.Backlog, false, true, Complexity.Low, Priority.DoItNow)} />
+					</ResizablePanel>
 				</ResizablePanelGroup>
 			</TooltipProvider>
 		</div>
