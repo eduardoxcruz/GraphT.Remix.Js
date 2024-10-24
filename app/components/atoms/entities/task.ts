@@ -13,8 +13,8 @@ class Task {
 	private _isProductive: boolean;
 	private _relevance: Relevance;
 	private _dateTimeInfo: DateTimeInfo;
-	private _upstreams: Set<Task>;
-	private _downstreams: Set<Task>;
+	public upstreams: Set<Task>;
+	public downstreams: Set<Task>;
 	public complexity: Complexity;
 	public priority: Priority;
 
@@ -32,8 +32,8 @@ class Task {
 		this._isFun = isFun;
 		this._isProductive = isProductive;
 		this._dateTimeInfo = new DateTimeInfo();
-		this._upstreams = new Set();
-		this._downstreams = new Set();
+		this.upstreams = new Set();
+		this.downstreams = new Set();
 		this.complexity = complexity;
 		this.priority = priority;
 		this.updateRelevance();
@@ -69,14 +69,6 @@ class Task {
 		return this._dateTimeInfo;
 	}
 
-	get upstreams(): ReadonlySet<Task> {
-		return this._upstreams;
-	}
-
-	get downstreams(): ReadonlySet<Task> {
-		return this._downstreams;
-	}
-
 	private updateRelevance(): void {
 		if (this._isFun && this._isProductive) {
 			this._relevance = Relevance.Purposeful;
@@ -90,9 +82,9 @@ class Task {
 	}
 
 	private getProgress(): number {
-		const totalDownstreams = this._downstreams.size;
-		const backlogTasks = [...this._downstreams].filter((task) => task.status === Status.Backlog).length;
-		const completedOrDroppedTasks = [...this._downstreams].filter(
+		const totalDownstreams = this.downstreams.size;
+		const backlogTasks = [...this.downstreams].filter((task) => task.status === Status.Backlog).length;
+		const completedOrDroppedTasks = [...this.downstreams].filter(
 			(task) => task.status === Status.Completed || task.status === Status.Dropped
 		).length;
 		const currentTask = 1;
